@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/binary"
+	"encoding/json"
 	"fmt"
 	"math"
 	"path/filepath"
@@ -197,9 +198,14 @@ func (k Keeper) create(ctx sdk.Context, creator sdk.AccAddress, wasmCode []byte,
 	codeInfo := types.NewCodeInfo(checksum, creator, *instantiateAccess)
 	k.storeCodeInfo(ctx, codeID, codeInfo)
 
+	instantiateMessage, _ := json.Marshal(instantiateAccess)
 	evt := sdk.NewEvent(
 		types.EventTypeStoreCode,
 		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(codeID, 10)),
+		sdk.NewAttribute("creator", creator.String()),
+		sdk.NewAttribute("permission", string(instantiateMessage)),
+		sdk.NewAttribute("code", string(wasmCode)),
+		sdk.NewAttribute("checksum", string(checksum)),
 	)
 	for _, f := range strings.Split(report.RequiredFeatures, ",") {
 		evt.AppendAttributes(sdk.NewAttribute(types.AttributeKeyFeature, strings.TrimSpace(f)))

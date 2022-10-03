@@ -136,3 +136,7 @@ message Model {
   // base64-encode raw value
   bytes value = 2;
 }
+
+message EventCodeStored {
+  
+}
