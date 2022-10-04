@@ -204,7 +204,6 @@ func (k Keeper) create(ctx sdk.Context, creator sdk.AccAddress, wasmCode []byte,
 		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(codeID, 10)),
 		sdk.NewAttribute("creator", creator.String()),
 		sdk.NewAttribute("permission", string(instantiateMessage)),
-		sdk.NewAttribute("code", string(wasmCode)),
 		sdk.NewAttribute("checksum", string(checksum)),
 	)
 	for _, f := range strings.Split(report.RequiredFeatures, ",") {
