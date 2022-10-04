@@ -189,7 +189,14 @@ func (k Keeper) create(ctx sdk.Context, creator sdk.AccAddress, wasmCode []byte,
 	codeInfo := types.NewCodeInfo(checksum, creator, *instantiateAccess)
 	k.storeCodeInfo(ctx, codeID, codeInfo)
 
-	return codeID, checksum, nil
+	ctx.EventManager().EmitTypedEvent(&types.EventCodeStored{
+		CodeID:       codeID,
+		Creator:      creator.String(),
+		AccessConfig: instantiateAccess,
+		Checksum:     checksum,
+	})
+
+	return codeID, nil
 }
 
 func (k Keeper) storeCodeInfo(ctx sdk.Context, codeID uint64, codeInfo types.CodeInfo) {
@@ -350,6 +357,15 @@ func (k Keeper) instantiate(
 		return nil, nil, errorsmod.Wrap(err, "dispatch")
 	}
 
+	ctx.EventManager().EmitTypedEvent(&types.EventContractInstantiated{
+		ContractAddress: contractAddress.String(),
+		Admin:           contractInfo.Admin,
+		CodeID:          contractInfo.CodeID,
+		Funds:           deposit,
+		Msg:             initMsg,
+		Label:           label,
+	})
+
 	return contractAddress, data, nil
 }
 
@@ -455,16 +471,16 @@ func (k Keeper) migrate(ctx sdk.Context, contractAddress sdk.AccAddress, caller 
 	k.addToContractCodeSecondaryIndex(ctx, contractAddress, historyEntry)
 	k.storeContractInfo(ctx, contractAddress, contractInfo)
 
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeMigrate,
-		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(newCodeID, 10)),
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-	))
-
 	data, err := k.handleContractResponse(ctx, contractAddress, contractInfo.IBCPortID, res.Messages, res.Attributes, res.Data, res.Events)
 	if err != nil {
 		return nil, errorsmod.Wrap(err, "dispatch")
 	}
+
+	ctx.EventManager().EmitTypedEvent(&types.EventContractMigrated{
+		CodeID:          newCodeID,
+		ContractAddress: contractAddress.String(),
+		Msg:             msg,
+	})
 
 	return data, nil
 }
@@ -595,12 +611,11 @@ func (k Keeper) setContractAdmin(ctx sdk.Context, contractAddress, caller, newAd
 	newAdminStr := newAdmin.String()
 	contractInfo.Admin = newAdminStr
 	k.storeContractInfo(ctx, contractAddress, contractInfo)
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeUpdateContractAdmin,
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-		sdk.NewAttribute(types.AttributeKeyNewAdmin, newAdminStr),
-	))
 
+	ctx.EventManager().EmitTypedEvent(&types.EventContractAdminSet{
+		ContractAddress: contractAddress.String(),
+		NewAdmin:        newAdmin.String(),
+	})
 	return nil
 }
 
