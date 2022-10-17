@@ -29,4 +29,4 @@ cd ..
 cp -r github.com/CosmWasm/wasmd/* ./
 rm -rf github.com
 
-go mod tidy
+#go mod tidy

@@ -233,6 +233,13 @@ func (k Keeper) create(ctx sdk.Context, creator sdk.AccAddress, wasmCode []byte,
 	}
 	ctx.EventManager().EmitEvent(evt)
 
+	ctx.EventManager().EmitTypedEvent(&types.EventCodeStored{
+		CodeID:       codeID,
+		Creator:      creator.String(),
+		AccessConfig: instantiateAccess,
+		Checksum:     checksum,
+	})
+
 	return codeID, checksum, nil
 }
 
@@ -395,6 +402,15 @@ func (k Keeper) instantiate(
 		return nil, nil, sdkerrors.Wrap(err, "dispatch")
 	}
 
+	ctx.EventManager().EmitTypedEvent(&types.EventContractInstantiated{
+		ContractAddress: contractAddress.String(),
+		Admin:           contractInfo.Admin,
+		CodeID:          contractInfo.CodeID,
+		Funds:           deposit,
+		Msg:             initMsg,
+		Label:           label,
+	})
+
 	return contractAddress, data, nil
 }
 
@@ -500,16 +516,16 @@ func (k Keeper) migrate(ctx sdk.Context, contractAddress sdk.AccAddress, caller 
 	k.addToContractCodeSecondaryIndex(ctx, contractAddress, historyEntry)
 	k.storeContractInfo(ctx, contractAddress, contractInfo)
 
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeMigrate,
-		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(newCodeID, 10)),
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-	))
-
 	data, err := k.handleContractResponse(ctx, contractAddress, contractInfo.IBCPortID, res.Messages, res.Attributes, res.Data, res.Events)
 	if err != nil {
 		return nil, sdkerrors.Wrap(err, "dispatch")
 	}
+
+	ctx.EventManager().EmitTypedEvent(&types.EventContractMigrated{
+		CodeID:          newCodeID,
+		ContractAddress: contractAddress.String(),
+		Msg:             msg,
+	})
 
 	return data, nil
 }
@@ -639,6 +655,11 @@ func (k Keeper) setContractAdmin(ctx sdk.Context, contractAddress, caller, newAd
 	}
 	contractInfo.Admin = newAdmin.String()
 	k.storeContractInfo(ctx, contractAddress, contractInfo)
+
+	ctx.EventManager().EmitTypedEvent(&types.EventContractAdminSet{
+		ContractAddress: contractAddress.String(),
+		NewAdmin:        newAdmin.String(),
+	})
 	return nil
 }
 
