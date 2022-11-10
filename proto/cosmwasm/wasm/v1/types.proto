@@ -166,6 +166,7 @@ message EventContractInstantiated {
   ];
   bytes msg = 5 [ (gogoproto.casttype) = "RawContractMessage" ];
   string label = 6;
+  string creator = 7;
 }
 
 // EventContractMigrated is emitted when a contract get migrated to another code
