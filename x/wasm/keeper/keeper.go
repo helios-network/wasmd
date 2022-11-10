@@ -327,12 +327,6 @@ func (k Keeper) instantiate(ctx sdk.Context, codeID uint64, creator, admin sdk.A
 	k.appendToContractHistory(ctx, contractAddress, historyEntry)
 	k.storeContractInfo(ctx, contractAddress, &contractInfo)
 
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeInstantiate,
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(codeID, 10)),
-	))
-
 	data, err := k.handleContractResponse(ctx, contractAddress, contractInfo.IBCPortID, res.Messages, res.Attributes, res.Data, res.Events)
 	if err != nil {
 		return nil, nil, sdkerrors.Wrap(err, "dispatch")
@@ -345,6 +339,7 @@ func (k Keeper) instantiate(ctx sdk.Context, codeID uint64, creator, admin sdk.A
 		Funds:           deposit,
 		Msg:             initMsg,
 		Label:           label,
+		Creator:         contractInfo.Creator,
 	})
 
 	return contractAddress, data, nil
