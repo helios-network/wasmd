@@ -433,6 +433,7 @@ EventContractInstantiated is emitted when contract is instantiated
 | `funds` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated | Funds coins that are transferred to the contract on instantiation |
 | `msg` | [bytes](#bytes) |  |  |
 | `label` | [string](#string) |  |  |
+| `creator` | [string](#string) |  |  |
 
 
 
