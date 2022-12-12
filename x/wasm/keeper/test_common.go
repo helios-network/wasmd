@@ -290,6 +290,7 @@ func createTestInput(
 	bankKeeper := bankkeeper.NewBaseKeeper(
 		appCodec,
 		keys[banktypes.StoreKey],
+		tkeys[banktypes.TStoreKey],
 		accountKeeper,
 		subspace(banktypes.ModuleName),
 		blockedAddrs,
