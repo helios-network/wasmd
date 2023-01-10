@@ -54,6 +54,7 @@ func RegisterInterfaces(registry types.InterfaceRegistry) {
 		&MsgStoreCode{},
 		&MsgInstantiateContract{},
 		&MsgInstantiateContract2{},
+		&MsgExecuteContractCompat{},
 		&MsgExecuteContract{},
 		&MsgMigrateContract{},
 		&MsgUpdateAdmin{},

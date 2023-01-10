@@ -31,6 +31,13 @@ func NewHandler(k types.ContractOpsKeeper) sdk.Handler {
 			res, err = msgServer.InstantiateContract(sdk.WrapSDKContext(ctx), msg)
 		case *MsgInstantiateContract2:
 			res, err = msgServer.InstantiateContract2(sdk.WrapSDKContext(ctx), msg)
+		case *MsgExecuteContractCompat:
+			oMsg := &MsgExecuteContract{
+				Sender:   msg.Sender,
+				Contract: msg.Contract,
+				Msg:      []byte(msg.Msg),
+			}
+			res, err = msgServer.ExecuteContract(sdk.WrapSDKContext(ctx), oMsg)
 		case *MsgExecuteContract:
 			res, err = msgServer.ExecuteContract(sdk.WrapSDKContext(ctx), msg)
 		case *MsgMigrateContract:

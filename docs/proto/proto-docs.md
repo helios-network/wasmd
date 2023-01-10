@@ -36,6 +36,7 @@
     - [MsgClearAdmin](#cosmwasm.wasm.v1.MsgClearAdmin)
     - [MsgClearAdminResponse](#cosmwasm.wasm.v1.MsgClearAdminResponse)
     - [MsgExecuteContract](#cosmwasm.wasm.v1.MsgExecuteContract)
+    - [MsgExecuteContractCompat](#cosmwasm.wasm.v1.MsgExecuteContractCompat)
     - [MsgExecuteContractResponse](#cosmwasm.wasm.v1.MsgExecuteContractResponse)
     - [MsgInstantiateContract](#cosmwasm.wasm.v1.MsgInstantiateContract)
     - [MsgInstantiateContract2](#cosmwasm.wasm.v1.MsgInstantiateContract2)
@@ -566,6 +567,24 @@ MsgExecuteContract submits the given message data to a smart contract
 | `sender` | [string](#string) |  | Sender is the that actor that signed the messages |
 | `contract` | [string](#string) |  | Contract is the address of the smart contract |
 | `msg` | [bytes](#bytes) |  | Msg json encoded message to be passed to the contract |
+| `funds` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated | Funds coins that are transferred to the contract on execution |
+
+
+
+
+
+
+<a name="cosmwasm.wasm.v1.MsgExecuteContractCompat"></a>
+
+### MsgExecuteContractCompat
+MsgExecuteContractCompat submits the given message data to a smart contract, compatible with EIP712
+
+
+| Field | Type | Label | Description |
+| ----- | ---- | ----- | ----------- |
+| `sender` | [string](#string) |  | Sender is the that actor that signed the messages |
+| `contract` | [string](#string) |  | Contract is the address of the smart contract |
+| `msg` | [string](#string) |  | Msg json encoded message to be passed to the contract |
 | `funds` | [cosmos.base.v1beta1.Coin](#cosmos.base.v1beta1.Coin) | repeated | Funds coins that are transferred to the contract on execution |
 
 

@@ -395,3 +395,57 @@ func (msg MsgInstantiateContract2) GetSigners() []sdk.AccAddress {
 	}
 	return []sdk.AccAddress{senderAddr}
 }
+
+func (msg MsgExecuteContractCompat) Route() string {
+	return RouterKey
+}
+
+func (msg MsgExecuteContractCompat) Type() string {
+	return "executeCompat"
+}
+
+func (msg MsgExecuteContractCompat) ValidateBasic() error {
+	if _, err := sdk.AccAddressFromBech32(msg.Sender); err != nil {
+		return sdkerrors.Wrap(err, "sender")
+	}
+	if _, err := sdk.AccAddressFromBech32(msg.Contract); err != nil {
+		return sdkerrors.Wrap(err, "contract")
+	}
+
+	if !msg.Funds.IsValid() {
+		return sdkerrors.Wrap(sdkerrors.ErrInvalidCoins, "sentFunds")
+	}
+
+	rawMsg := RawContractMessage(msg.Msg)
+	if err := rawMsg.ValidateBasic(); err != nil {
+		return sdkerrors.Wrap(err, "payload msg")
+	}
+	return nil
+}
+
+func (msg MsgExecuteContractCompat) GetSignBytes() []byte {
+	return sdk.MustSortJSON(ModuleCdc.MustMarshalJSON(&msg))
+}
+
+func (msg MsgExecuteContractCompat) GetSigners() []sdk.AccAddress {
+	senderAddr, err := sdk.AccAddressFromBech32(msg.Sender)
+	if err != nil { // should never happen as valid basic rejects invalid addresses
+		panic(err.Error())
+	}
+	return []sdk.AccAddress{senderAddr}
+}
+
+// GetMsg returns the payload message send to the contract
+func (msg MsgExecuteContractCompat) GetMsg() RawContractMessage {
+	return []byte(msg.Msg)
+}
+
+// GetFunds returns tokens send to the contract
+func (msg MsgExecuteContractCompat) GetFunds() sdk.Coins {
+	return msg.Funds
+}
+
+// GetContract returns the bech32 address of the contract
+func (msg MsgExecuteContractCompat) GetContract() string {
+	return msg.Contract
+}

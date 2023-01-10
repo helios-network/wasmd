@@ -126,6 +126,21 @@ message MsgExecuteContract {
   ];
 }
 
+// MsgExecuteContractCompat submits the given message data to a smart contract, compatible with EIP712
+message MsgExecuteContractCompat {
+  // Sender is the that actor that signed the messages
+  string sender = 1;
+  // Contract is the address of the smart contract
+  string contract = 2;
+  // Msg json encoded message to be passed to the contract
+  string msg = 3;
+  // Funds coins that are transferred to the contract on execution
+  repeated cosmos.base.v1beta1.Coin funds = 5 [
+    (gogoproto.nullable) = false,
+    (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"
+  ];
+}
+
 // MsgExecuteContractResponse returns execution result data.
 message MsgExecuteContractResponse {
   // Data contains bytes to returned from the contract

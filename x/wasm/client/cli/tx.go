@@ -60,6 +60,7 @@ func GetTxCmd() *cobra.Command {
 		StoreCodeCmd(),
 		InstantiateContractCmd(),
 		InstantiateContract2Cmd(),
+		ExecuteContractCompatCmd(),
 		ExecuteContractCmd(),
 		MigrateContractCmd(),
 		UpdateContractAdminCmd(),
@@ -343,6 +344,36 @@ func parseInstantiateArgs(rawCodeID, initMsg string, sender sdk.AccAddress, flag
 }
 
 // ExecuteContractCmd will instantiate a contract from previously uploaded code.
+func ExecuteContractCompatCmd() *cobra.Command {
+	cmd := &cobra.Command{
+		Use:     "execute-compat [contract_addr_bech32] [json_encoded_send_args] --amount [coins,optional]",
+		Short:   "Execute a command on a wasm contract",
+		Aliases: []string{"run-compat", "call-compat", "exec-compat", "ex-compat", "e-compat"},
+		Args:    cobra.ExactArgs(2),
+		RunE: func(cmd *cobra.Command, args []string) error {
+			clientCtx, err := client.GetClientTxContext(cmd)
+			if err != nil {
+				return err
+			}
+
+			msg, err := parseExecuteCompatArgs(args[0], args[1], clientCtx.GetFromAddress(), cmd.Flags())
+			if err != nil {
+				return err
+			}
+			if err := msg.ValidateBasic(); err != nil {
+				return err
+			}
+			return tx.GenerateOrBroadcastTxCLI(clientCtx, cmd.Flags(), &msg)
+		},
+		SilenceUsage: true,
+	}
+
+	cmd.Flags().String(flagAmount, "", "Coins to send to the contract along with command")
+	flags.AddTxFlagsToCmd(cmd)
+	return cmd
+}
+
+// ExecuteContractCmd will instantiate a contract from previously uploaded code.
 func ExecuteContractCmd() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:     "execute [contract_addr_bech32] [json_encoded_send_args] --amount [coins,optional]",
@@ -370,6 +401,25 @@ func ExecuteContractCmd() *cobra.Command {
 	cmd.Flags().String(flagAmount, "", "Coins to send to the contract along with command")
 	flags.AddTxFlagsToCmd(cmd)
 	return cmd
+}
+
+func parseExecuteCompatArgs(contractAddr string, execMsg string, sender sdk.AccAddress, flags *flag.FlagSet) (types.MsgExecuteContractCompat, error) {
+	amountStr, err := flags.GetString(flagAmount)
+	if err != nil {
+		return types.MsgExecuteContractCompat{}, fmt.Errorf("amount: %s", err)
+	}
+
+	amount, err := sdk.ParseCoinsNormalized(amountStr)
+	if err != nil {
+		return types.MsgExecuteContractCompat{}, err
+	}
+
+	return types.MsgExecuteContractCompat{
+		Sender:   sender.String(),
+		Contract: contractAddr,
+		Funds:    amount,
+		Msg:      execMsg,
+	}, nil
 }
 
 func parseExecuteArgs(contractAddr string, execMsg string, sender sdk.AccAddress, flags *flag.FlagSet) (types.MsgExecuteContract, error) {

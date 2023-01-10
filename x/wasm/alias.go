@@ -103,6 +103,7 @@ type (
 	MsgInstantiateContract         = types.MsgInstantiateContract
 	MsgInstantiateContract2        = types.MsgInstantiateContract2
 	MsgInstantiateContractResponse = types.MsgInstantiateContractResponse
+	MsgExecuteContractCompat       = types.MsgExecuteContractCompat
 	MsgExecuteContract             = types.MsgExecuteContract
 	MsgExecuteContractResponse     = types.MsgExecuteContractResponse
 	MsgMigrateContract             = types.MsgMigrateContract
