@@ -1,6 +1,9 @@
 package keeper
 
 import (
+	"encoding/json"
+	"fmt"
+
 	wasmvmtypes "github.com/CosmWasm/wasmvm/types"
 	storetypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -182,19 +185,22 @@ func (g WasmGasRegister) InstantiateContractCosts(pinned bool, msgLen int) sdk.G
 
 // ReplyCosts costs to to handle a message reply
 func (g WasmGasRegister) ReplyCosts(pinned bool, reply wasmvmtypes.Reply) sdk.Gas {
-	// var eventGas sdk.Gas
-	// msgLen := len(reply.Result.Err)
-	// if reply.Result.Ok != nil {
-	// 	msgLen += len(reply.Result.Ok.Data)
-	// 	var attrs []wasmvmtypes.EventAttribute
-	// 	for _, e := range reply.Result.Ok.Events {
-	// 		eventGas += sdk.Gas(len(e.Type)) * g.c.EventAttributeDataCost
-	// 		attrs = append(attrs, e.Attributes...)
-	// 	}
-	// 	// apply free tier on the whole set not per event
-	// 	eventGas += g.EventCosts(attrs, nil)
-	// }
+	var eventGas sdk.Gas
+	msgLen := len(reply.Result.Err)
+	if reply.Result.Ok != nil {
+		msgLen += len(reply.Result.Ok.Data)
+		var attrs []wasmvmtypes.EventAttribute
+		for _, e := range reply.Result.Ok.Events {
+			eventGas += sdk.Gas(len(e.Type)) * g.c.EventAttributeDataCost
+			attrs = append(attrs, e.Attributes...)
+		}
+		bz, _ := json.Marshal(attrs)
+		fmt.Println("wasm event:", string(bz))
+		// apply free tier on the whole set not per event
+		eventGas += g.EventCosts(attrs, nil)
+	}
 	// return eventGas + g.InstantiateContractCosts(pinned, msgLen)
+
 	return sdk.Gas(0)
 }
 
