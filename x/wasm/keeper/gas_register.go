@@ -195,7 +195,7 @@ func (g WasmGasRegister) ReplyCosts(pinned bool, reply wasmvmtypes.Reply) sdk.Ga
 			attrs = append(attrs, e.Attributes...)
 		}
 		bz, _ := json.Marshal(attrs)
-		fmt.Println("wasm event:", string(bz))
+		fmt.Println("wasmattrs to compute gas:", string(bz))
 		// apply free tier on the whole set not per event
 		eventGas += g.EventCosts(attrs, nil)
 	}
