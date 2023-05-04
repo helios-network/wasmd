@@ -196,7 +196,7 @@ func (k Keeper) create(ctx sdk.Context, creator sdk.AccAddress, wasmCode []byte,
 		Checksum:     checksum,
 	})
 
-	return codeID, nil
+	return codeID, checksum, nil
 }
 
 func (k Keeper) storeCodeInfo(ctx sdk.Context, codeID uint64, codeInfo types.CodeInfo) {
