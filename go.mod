@@ -206,9 +206,9 @@ require (
 )
 
 replace (
+	cosmossdk.io/store => github.com/InjectiveLabs/cosmos-sdk/store v1.0.1-inj-1
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.2.0
 	github.com/cosmos/cosmos-sdk => github.com/InjectiveLabs/cosmos-sdk v0.50.2-inj-1-bez
-
 	github.com/cosmos/ibc-go/v8 => github.com/InjectiveLabs/ibc-go/v8 v8.0.0-inj-1-bez
 	// dgrijalva/jwt-go is deprecated and doesn't receive security updates.
 	// See: https://github.com/cosmos/cosmos-sdk/issues/13134
