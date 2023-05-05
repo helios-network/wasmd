@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"context"
 	"encoding/binary"
-	"encoding/hex"
 	"fmt"
 	"math"
 	"reflect"
@@ -190,15 +189,12 @@ func (k Keeper) create(ctx sdk.Context, creator sdk.AccAddress, wasmCode []byte,
 	codeInfo := types.NewCodeInfo(checksum, creator, *instantiateAccess)
 	k.storeCodeInfo(ctx, codeID, codeInfo)
 
-	evt := sdk.NewEvent(
-		types.EventTypeStoreCode,
-		sdk.NewAttribute(types.AttributeKeyChecksum, hex.EncodeToString(checksum)),
-		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(codeID, 10)), // last element to be compatible with scripts
-	)
-	for _, f := range strings.Split(report.RequiredCapabilities, ",") {
-		evt.AppendAttributes(sdk.NewAttribute(types.AttributeKeyRequiredCapability, strings.TrimSpace(f)))
-	}
-	ctx.EventManager().EmitEvent(evt)
+	ctx.EventManager().EmitTypedEvent(&types.EventCodeStored{
+		CodeID:       codeID,
+		Creator:      creator.String(),
+		AccessConfig: instantiateAccess,
+		Checksum:     checksum,
+	})
 
 	return codeID, checksum, nil
 }
@@ -350,16 +346,20 @@ func (k Keeper) instantiate(
 	k.appendToContractHistory(ctx, contractAddress, historyEntry)
 	k.storeContractInfo(ctx, contractAddress, &contractInfo)
 
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeInstantiate,
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(codeID, 10)),
-	))
-
 	data, err := k.handleContractResponse(ctx, contractAddress, contractInfo.IBCPortID, res.Messages, res.Attributes, res.Data, res.Events)
 	if err != nil {
 		return nil, nil, errorsmod.Wrap(err, "dispatch")
 	}
+
+	ctx.EventManager().EmitTypedEvent(&types.EventContractInstantiated{
+		ContractAddress: contractAddress.String(),
+		Admin:           contractInfo.Admin,
+		CodeID:          contractInfo.CodeID,
+		Funds:           deposit,
+		Msg:             initMsg,
+		Label:           label,
+		Creator:         contractInfo.Creator,
+	})
 
 	return contractAddress, data, nil
 }
@@ -466,16 +466,16 @@ func (k Keeper) migrate(ctx sdk.Context, contractAddress sdk.AccAddress, caller 
 	k.addToContractCodeSecondaryIndex(ctx, contractAddress, historyEntry)
 	k.storeContractInfo(ctx, contractAddress, contractInfo)
 
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeMigrate,
-		sdk.NewAttribute(types.AttributeKeyCodeID, strconv.FormatUint(newCodeID, 10)),
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-	))
-
 	data, err := k.handleContractResponse(ctx, contractAddress, contractInfo.IBCPortID, res.Messages, res.Attributes, res.Data, res.Events)
 	if err != nil {
 		return nil, errorsmod.Wrap(err, "dispatch")
 	}
+
+	ctx.EventManager().EmitTypedEvent(&types.EventContractMigrated{
+		CodeID:          newCodeID,
+		ContractAddress: contractAddress.String(),
+		Msg:             msg,
+	})
 
 	return data, nil
 }
@@ -606,12 +606,11 @@ func (k Keeper) setContractAdmin(ctx sdk.Context, contractAddress, caller, newAd
 	newAdminStr := newAdmin.String()
 	contractInfo.Admin = newAdminStr
 	k.storeContractInfo(ctx, contractAddress, contractInfo)
-	ctx.EventManager().EmitEvent(sdk.NewEvent(
-		types.EventTypeUpdateContractAdmin,
-		sdk.NewAttribute(types.AttributeKeyContractAddr, contractAddress.String()),
-		sdk.NewAttribute(types.AttributeKeyNewAdmin, newAdminStr),
-	))
 
+	ctx.EventManager().EmitTypedEvent(&types.EventContractAdminSet{
+		ContractAddress: contractAddress.String(),
+		NewAdmin:        newAdmin.String(),
+	})
 	return nil
 }
 
