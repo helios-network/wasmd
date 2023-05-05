@@ -6,10 +6,6 @@ package types
 import (
 	context "context"
 	fmt "fmt"
-	io "io"
-	math "math"
-	math_bits "math/bits"
-
 	_ "github.com/cosmos/cosmos-proto"
 	github_com_cosmos_cosmos_sdk_types "github.com/cosmos/cosmos-sdk/types"
 	types "github.com/cosmos/cosmos-sdk/types"
@@ -21,14 +17,15 @@ import (
 	grpc "google.golang.org/grpc"
 	codes "google.golang.org/grpc/codes"
 	status "google.golang.org/grpc/status"
+	io "io"
+	math "math"
+	math_bits "math/bits"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
-var (
-	_ = proto.Marshal
-	_ = fmt.Errorf
-	_ = math.Inf
-)
+var _ = proto.Marshal
+var _ = fmt.Errorf
+var _ = math.Inf
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the proto package it is being compiled against.
@@ -53,11 +50,9 @@ func (*MsgStoreCode) ProtoMessage()    {}
 func (*MsgStoreCode) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{0}
 }
-
 func (m *MsgStoreCode) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgStoreCode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgStoreCode.Marshal(b, m, deterministic)
@@ -70,15 +65,12 @@ func (m *MsgStoreCode) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return b[:n], nil
 	}
 }
-
 func (m *MsgStoreCode) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgStoreCode.Merge(m, src)
 }
-
 func (m *MsgStoreCode) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgStoreCode) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgStoreCode.DiscardUnknown(m)
 }
@@ -99,11 +91,9 @@ func (*MsgStoreCodeResponse) ProtoMessage()    {}
 func (*MsgStoreCodeResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{1}
 }
-
 func (m *MsgStoreCodeResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgStoreCodeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgStoreCodeResponse.Marshal(b, m, deterministic)
@@ -116,15 +106,12 @@ func (m *MsgStoreCodeResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte
 		return b[:n], nil
 	}
 }
-
 func (m *MsgStoreCodeResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgStoreCodeResponse.Merge(m, src)
 }
-
 func (m *MsgStoreCodeResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgStoreCodeResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgStoreCodeResponse.DiscardUnknown(m)
 }
@@ -154,11 +141,9 @@ func (*MsgInstantiateContract) ProtoMessage()    {}
 func (*MsgInstantiateContract) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{2}
 }
-
 func (m *MsgInstantiateContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgInstantiateContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgInstantiateContract.Marshal(b, m, deterministic)
@@ -171,15 +156,12 @@ func (m *MsgInstantiateContract) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return b[:n], nil
 	}
 }
-
 func (m *MsgInstantiateContract) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgInstantiateContract.Merge(m, src)
 }
-
 func (m *MsgInstantiateContract) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgInstantiateContract) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgInstantiateContract.DiscardUnknown(m)
 }
@@ -200,11 +182,9 @@ func (*MsgInstantiateContractResponse) ProtoMessage()    {}
 func (*MsgInstantiateContractResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{3}
 }
-
 func (m *MsgInstantiateContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgInstantiateContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgInstantiateContractResponse.Marshal(b, m, deterministic)
@@ -217,15 +197,12 @@ func (m *MsgInstantiateContractResponse) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-
 func (m *MsgInstantiateContractResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgInstantiateContractResponse.Merge(m, src)
 }
-
 func (m *MsgInstantiateContractResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgInstantiateContractResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgInstantiateContractResponse.DiscardUnknown(m)
 }
@@ -260,11 +237,9 @@ func (*MsgInstantiateContract2) ProtoMessage()    {}
 func (*MsgInstantiateContract2) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{4}
 }
-
 func (m *MsgInstantiateContract2) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgInstantiateContract2) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgInstantiateContract2.Marshal(b, m, deterministic)
@@ -277,15 +252,12 @@ func (m *MsgInstantiateContract2) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return b[:n], nil
 	}
 }
-
 func (m *MsgInstantiateContract2) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgInstantiateContract2.Merge(m, src)
 }
-
 func (m *MsgInstantiateContract2) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgInstantiateContract2) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgInstantiateContract2.DiscardUnknown(m)
 }
@@ -306,11 +278,9 @@ func (*MsgInstantiateContract2Response) ProtoMessage()    {}
 func (*MsgInstantiateContract2Response) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{5}
 }
-
 func (m *MsgInstantiateContract2Response) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgInstantiateContract2Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgInstantiateContract2Response.Marshal(b, m, deterministic)
@@ -323,15 +293,12 @@ func (m *MsgInstantiateContract2Response) XXX_Marshal(b []byte, deterministic bo
 		return b[:n], nil
 	}
 }
-
 func (m *MsgInstantiateContract2Response) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgInstantiateContract2Response.Merge(m, src)
 }
-
 func (m *MsgInstantiateContract2Response) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgInstantiateContract2Response) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgInstantiateContract2Response.DiscardUnknown(m)
 }
@@ -356,11 +323,9 @@ func (*MsgExecuteContract) ProtoMessage()    {}
 func (*MsgExecuteContract) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{6}
 }
-
 func (m *MsgExecuteContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgExecuteContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgExecuteContract.Marshal(b, m, deterministic)
@@ -373,15 +338,12 @@ func (m *MsgExecuteContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-
 func (m *MsgExecuteContract) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgExecuteContract.Merge(m, src)
 }
-
 func (m *MsgExecuteContract) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgExecuteContract) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgExecuteContract.DiscardUnknown(m)
 }
@@ -400,11 +362,9 @@ func (*MsgExecuteContractResponse) ProtoMessage()    {}
 func (*MsgExecuteContractResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{7}
 }
-
 func (m *MsgExecuteContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgExecuteContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgExecuteContractResponse.Marshal(b, m, deterministic)
@@ -417,15 +377,12 @@ func (m *MsgExecuteContractResponse) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-
 func (m *MsgExecuteContractResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgExecuteContractResponse.Merge(m, src)
 }
-
 func (m *MsgExecuteContractResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgExecuteContractResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgExecuteContractResponse.DiscardUnknown(m)
 }
@@ -450,11 +407,9 @@ func (*MsgMigrateContract) ProtoMessage()    {}
 func (*MsgMigrateContract) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{8}
 }
-
 func (m *MsgMigrateContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgMigrateContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgMigrateContract.Marshal(b, m, deterministic)
@@ -467,15 +422,12 @@ func (m *MsgMigrateContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-
 func (m *MsgMigrateContract) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgMigrateContract.Merge(m, src)
 }
-
 func (m *MsgMigrateContract) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgMigrateContract) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgMigrateContract.DiscardUnknown(m)
 }
@@ -495,11 +447,9 @@ func (*MsgMigrateContractResponse) ProtoMessage()    {}
 func (*MsgMigrateContractResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{9}
 }
-
 func (m *MsgMigrateContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgMigrateContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgMigrateContractResponse.Marshal(b, m, deterministic)
@@ -512,15 +462,12 @@ func (m *MsgMigrateContractResponse) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-
 func (m *MsgMigrateContractResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgMigrateContractResponse.Merge(m, src)
 }
-
 func (m *MsgMigrateContractResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgMigrateContractResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgMigrateContractResponse.DiscardUnknown(m)
 }
@@ -543,11 +490,9 @@ func (*MsgUpdateAdmin) ProtoMessage()    {}
 func (*MsgUpdateAdmin) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{10}
 }
-
 func (m *MsgUpdateAdmin) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateAdmin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateAdmin.Marshal(b, m, deterministic)
@@ -560,15 +505,12 @@ func (m *MsgUpdateAdmin) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateAdmin) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateAdmin.Merge(m, src)
 }
-
 func (m *MsgUpdateAdmin) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateAdmin) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateAdmin.DiscardUnknown(m)
 }
@@ -576,7 +518,8 @@ func (m *MsgUpdateAdmin) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgUpdateAdmin proto.InternalMessageInfo
 
 // MsgUpdateAdminResponse returns empty data
-type MsgUpdateAdminResponse struct{}
+type MsgUpdateAdminResponse struct {
+}
 
 func (m *MsgUpdateAdminResponse) Reset()         { *m = MsgUpdateAdminResponse{} }
 func (m *MsgUpdateAdminResponse) String() string { return proto.CompactTextString(m) }
@@ -584,11 +527,9 @@ func (*MsgUpdateAdminResponse) ProtoMessage()    {}
 func (*MsgUpdateAdminResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{11}
 }
-
 func (m *MsgUpdateAdminResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateAdminResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateAdminResponse.Marshal(b, m, deterministic)
@@ -601,15 +542,12 @@ func (m *MsgUpdateAdminResponse) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateAdminResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateAdminResponse.Merge(m, src)
 }
-
 func (m *MsgUpdateAdminResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateAdminResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateAdminResponse.DiscardUnknown(m)
 }
@@ -630,11 +568,9 @@ func (*MsgClearAdmin) ProtoMessage()    {}
 func (*MsgClearAdmin) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{12}
 }
-
 func (m *MsgClearAdmin) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgClearAdmin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgClearAdmin.Marshal(b, m, deterministic)
@@ -647,15 +583,12 @@ func (m *MsgClearAdmin) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-
 func (m *MsgClearAdmin) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgClearAdmin.Merge(m, src)
 }
-
 func (m *MsgClearAdmin) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgClearAdmin) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgClearAdmin.DiscardUnknown(m)
 }
@@ -663,7 +596,8 @@ func (m *MsgClearAdmin) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgClearAdmin proto.InternalMessageInfo
 
 // MsgClearAdminResponse returns empty data
-type MsgClearAdminResponse struct{}
+type MsgClearAdminResponse struct {
+}
 
 func (m *MsgClearAdminResponse) Reset()         { *m = MsgClearAdminResponse{} }
 func (m *MsgClearAdminResponse) String() string { return proto.CompactTextString(m) }
@@ -671,11 +605,9 @@ func (*MsgClearAdminResponse) ProtoMessage()    {}
 func (*MsgClearAdminResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{13}
 }
-
 func (m *MsgClearAdminResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgClearAdminResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgClearAdminResponse.Marshal(b, m, deterministic)
@@ -688,15 +620,12 @@ func (m *MsgClearAdminResponse) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-
 func (m *MsgClearAdminResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgClearAdminResponse.Merge(m, src)
 }
-
 func (m *MsgClearAdminResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgClearAdminResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgClearAdminResponse.DiscardUnknown(m)
 }
@@ -718,11 +647,9 @@ func (*AccessConfigUpdate) ProtoMessage()    {}
 func (*AccessConfigUpdate) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{14}
 }
-
 func (m *AccessConfigUpdate) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *AccessConfigUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_AccessConfigUpdate.Marshal(b, m, deterministic)
@@ -735,15 +662,12 @@ func (m *AccessConfigUpdate) XXX_Marshal(b []byte, deterministic bool) ([]byte, 
 		return b[:n], nil
 	}
 }
-
 func (m *AccessConfigUpdate) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_AccessConfigUpdate.Merge(m, src)
 }
-
 func (m *AccessConfigUpdate) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *AccessConfigUpdate) XXX_DiscardUnknown() {
 	xxx_messageInfo_AccessConfigUpdate.DiscardUnknown(m)
 }
@@ -766,11 +690,9 @@ func (*MsgUpdateInstantiateConfig) ProtoMessage()    {}
 func (*MsgUpdateInstantiateConfig) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{15}
 }
-
 func (m *MsgUpdateInstantiateConfig) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateInstantiateConfig) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateInstantiateConfig.Marshal(b, m, deterministic)
@@ -783,15 +705,12 @@ func (m *MsgUpdateInstantiateConfig) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateInstantiateConfig) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateInstantiateConfig.Merge(m, src)
 }
-
 func (m *MsgUpdateInstantiateConfig) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateInstantiateConfig) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateInstantiateConfig.DiscardUnknown(m)
 }
@@ -799,7 +718,8 @@ func (m *MsgUpdateInstantiateConfig) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgUpdateInstantiateConfig proto.InternalMessageInfo
 
 // MsgUpdateInstantiateConfigResponse returns empty data
-type MsgUpdateInstantiateConfigResponse struct{}
+type MsgUpdateInstantiateConfigResponse struct {
+}
 
 func (m *MsgUpdateInstantiateConfigResponse) Reset()         { *m = MsgUpdateInstantiateConfigResponse{} }
 func (m *MsgUpdateInstantiateConfigResponse) String() string { return proto.CompactTextString(m) }
@@ -807,11 +727,9 @@ func (*MsgUpdateInstantiateConfigResponse) ProtoMessage()    {}
 func (*MsgUpdateInstantiateConfigResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{16}
 }
-
 func (m *MsgUpdateInstantiateConfigResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateInstantiateConfigResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateInstantiateConfigResponse.Marshal(b, m, deterministic)
@@ -824,15 +742,12 @@ func (m *MsgUpdateInstantiateConfigResponse) XXX_Marshal(b []byte, deterministic
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateInstantiateConfigResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateInstantiateConfigResponse.Merge(m, src)
 }
-
 func (m *MsgUpdateInstantiateConfigResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateInstantiateConfigResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateInstantiateConfigResponse.DiscardUnknown(m)
 }
@@ -857,11 +772,9 @@ func (*MsgUpdateParams) ProtoMessage()    {}
 func (*MsgUpdateParams) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{17}
 }
-
 func (m *MsgUpdateParams) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateParams) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateParams.Marshal(b, m, deterministic)
@@ -874,15 +787,12 @@ func (m *MsgUpdateParams) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateParams) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateParams.Merge(m, src)
 }
-
 func (m *MsgUpdateParams) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateParams) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateParams.DiscardUnknown(m)
 }
@@ -893,7 +803,8 @@ var xxx_messageInfo_MsgUpdateParams proto.InternalMessageInfo
 // MsgUpdateParams message.
 //
 // Since: 0.40
-type MsgUpdateParamsResponse struct{}
+type MsgUpdateParamsResponse struct {
+}
 
 func (m *MsgUpdateParamsResponse) Reset()         { *m = MsgUpdateParamsResponse{} }
 func (m *MsgUpdateParamsResponse) String() string { return proto.CompactTextString(m) }
@@ -901,11 +812,9 @@ func (*MsgUpdateParamsResponse) ProtoMessage()    {}
 func (*MsgUpdateParamsResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{18}
 }
-
 func (m *MsgUpdateParamsResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateParamsResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateParamsResponse.Marshal(b, m, deterministic)
@@ -918,15 +827,12 @@ func (m *MsgUpdateParamsResponse) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateParamsResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateParamsResponse.Merge(m, src)
 }
-
 func (m *MsgUpdateParamsResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateParamsResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateParamsResponse.DiscardUnknown(m)
 }
@@ -951,11 +857,9 @@ func (*MsgSudoContract) ProtoMessage()    {}
 func (*MsgSudoContract) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{19}
 }
-
 func (m *MsgSudoContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgSudoContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgSudoContract.Marshal(b, m, deterministic)
@@ -968,15 +872,12 @@ func (m *MsgSudoContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, err
 		return b[:n], nil
 	}
 }
-
 func (m *MsgSudoContract) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgSudoContract.Merge(m, src)
 }
-
 func (m *MsgSudoContract) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgSudoContract) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgSudoContract.DiscardUnknown(m)
 }
@@ -998,11 +899,9 @@ func (*MsgSudoContractResponse) ProtoMessage()    {}
 func (*MsgSudoContractResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{20}
 }
-
 func (m *MsgSudoContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgSudoContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgSudoContractResponse.Marshal(b, m, deterministic)
@@ -1015,15 +914,12 @@ func (m *MsgSudoContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]b
 		return b[:n], nil
 	}
 }
-
 func (m *MsgSudoContractResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgSudoContractResponse.Merge(m, src)
 }
-
 func (m *MsgSudoContractResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgSudoContractResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgSudoContractResponse.DiscardUnknown(m)
 }
@@ -1046,11 +942,9 @@ func (*MsgPinCodes) ProtoMessage()    {}
 func (*MsgPinCodes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{21}
 }
-
 func (m *MsgPinCodes) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgPinCodes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgPinCodes.Marshal(b, m, deterministic)
@@ -1063,15 +957,12 @@ func (m *MsgPinCodes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return b[:n], nil
 	}
 }
-
 func (m *MsgPinCodes) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgPinCodes.Merge(m, src)
 }
-
 func (m *MsgPinCodes) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgPinCodes) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgPinCodes.DiscardUnknown(m)
 }
@@ -1082,7 +973,8 @@ var xxx_messageInfo_MsgPinCodes proto.InternalMessageInfo
 // MsgPinCodes message.
 //
 // Since: 0.40
-type MsgPinCodesResponse struct{}
+type MsgPinCodesResponse struct {
+}
 
 func (m *MsgPinCodesResponse) Reset()         { *m = MsgPinCodesResponse{} }
 func (m *MsgPinCodesResponse) String() string { return proto.CompactTextString(m) }
@@ -1090,11 +982,9 @@ func (*MsgPinCodesResponse) ProtoMessage()    {}
 func (*MsgPinCodesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{22}
 }
-
 func (m *MsgPinCodesResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgPinCodesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgPinCodesResponse.Marshal(b, m, deterministic)
@@ -1107,15 +997,12 @@ func (m *MsgPinCodesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte,
 		return b[:n], nil
 	}
 }
-
 func (m *MsgPinCodesResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgPinCodesResponse.Merge(m, src)
 }
-
 func (m *MsgPinCodesResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgPinCodesResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgPinCodesResponse.DiscardUnknown(m)
 }
@@ -1138,11 +1025,9 @@ func (*MsgUnpinCodes) ProtoMessage()    {}
 func (*MsgUnpinCodes) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{23}
 }
-
 func (m *MsgUnpinCodes) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUnpinCodes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUnpinCodes.Marshal(b, m, deterministic)
@@ -1155,15 +1040,12 @@ func (m *MsgUnpinCodes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUnpinCodes) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUnpinCodes.Merge(m, src)
 }
-
 func (m *MsgUnpinCodes) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUnpinCodes) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUnpinCodes.DiscardUnknown(m)
 }
@@ -1174,7 +1056,8 @@ var xxx_messageInfo_MsgUnpinCodes proto.InternalMessageInfo
 // MsgUnpinCodes message.
 //
 // Since: 0.40
-type MsgUnpinCodesResponse struct{}
+type MsgUnpinCodesResponse struct {
+}
 
 func (m *MsgUnpinCodesResponse) Reset()         { *m = MsgUnpinCodesResponse{} }
 func (m *MsgUnpinCodesResponse) String() string { return proto.CompactTextString(m) }
@@ -1182,11 +1065,9 @@ func (*MsgUnpinCodesResponse) ProtoMessage()    {}
 func (*MsgUnpinCodesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{24}
 }
-
 func (m *MsgUnpinCodesResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUnpinCodesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUnpinCodesResponse.Marshal(b, m, deterministic)
@@ -1199,15 +1080,12 @@ func (m *MsgUnpinCodesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUnpinCodesResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUnpinCodesResponse.Merge(m, src)
 }
-
 func (m *MsgUnpinCodesResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUnpinCodesResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUnpinCodesResponse.DiscardUnknown(m)
 }
@@ -1253,11 +1131,9 @@ func (*MsgStoreAndInstantiateContract) ProtoMessage()    {}
 func (*MsgStoreAndInstantiateContract) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{25}
 }
-
 func (m *MsgStoreAndInstantiateContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgStoreAndInstantiateContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgStoreAndInstantiateContract.Marshal(b, m, deterministic)
@@ -1270,15 +1146,12 @@ func (m *MsgStoreAndInstantiateContract) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-
 func (m *MsgStoreAndInstantiateContract) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgStoreAndInstantiateContract.Merge(m, src)
 }
-
 func (m *MsgStoreAndInstantiateContract) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgStoreAndInstantiateContract) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgStoreAndInstantiateContract.DiscardUnknown(m)
 }
@@ -1304,11 +1177,9 @@ func (*MsgStoreAndInstantiateContractResponse) ProtoMessage()    {}
 func (*MsgStoreAndInstantiateContractResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{26}
 }
-
 func (m *MsgStoreAndInstantiateContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgStoreAndInstantiateContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgStoreAndInstantiateContractResponse.Marshal(b, m, deterministic)
@@ -1321,15 +1192,12 @@ func (m *MsgStoreAndInstantiateContractResponse) XXX_Marshal(b []byte, determini
 		return b[:n], nil
 	}
 }
-
 func (m *MsgStoreAndInstantiateContractResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgStoreAndInstantiateContractResponse.Merge(m, src)
 }
-
 func (m *MsgStoreAndInstantiateContractResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgStoreAndInstantiateContractResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgStoreAndInstantiateContractResponse.DiscardUnknown(m)
 }
@@ -1350,11 +1218,9 @@ func (*MsgAddCodeUploadParamsAddresses) ProtoMessage()    {}
 func (*MsgAddCodeUploadParamsAddresses) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{27}
 }
-
 func (m *MsgAddCodeUploadParamsAddresses) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgAddCodeUploadParamsAddresses) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgAddCodeUploadParamsAddresses.Marshal(b, m, deterministic)
@@ -1367,15 +1233,12 @@ func (m *MsgAddCodeUploadParamsAddresses) XXX_Marshal(b []byte, deterministic bo
 		return b[:n], nil
 	}
 }
-
 func (m *MsgAddCodeUploadParamsAddresses) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgAddCodeUploadParamsAddresses.Merge(m, src)
 }
-
 func (m *MsgAddCodeUploadParamsAddresses) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgAddCodeUploadParamsAddresses) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgAddCodeUploadParamsAddresses.DiscardUnknown(m)
 }
@@ -1384,7 +1247,8 @@ var xxx_messageInfo_MsgAddCodeUploadParamsAddresses proto.InternalMessageInfo
 
 // MsgAddCodeUploadParamsAddressesResponse defines the response
 // structure for executing a MsgAddCodeUploadParamsAddresses message.
-type MsgAddCodeUploadParamsAddressesResponse struct{}
+type MsgAddCodeUploadParamsAddressesResponse struct {
+}
 
 func (m *MsgAddCodeUploadParamsAddressesResponse) Reset() {
 	*m = MsgAddCodeUploadParamsAddressesResponse{}
@@ -1394,11 +1258,9 @@ func (*MsgAddCodeUploadParamsAddressesResponse) ProtoMessage()    {}
 func (*MsgAddCodeUploadParamsAddressesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{28}
 }
-
 func (m *MsgAddCodeUploadParamsAddressesResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgAddCodeUploadParamsAddressesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgAddCodeUploadParamsAddressesResponse.Marshal(b, m, deterministic)
@@ -1411,15 +1273,12 @@ func (m *MsgAddCodeUploadParamsAddressesResponse) XXX_Marshal(b []byte, determin
 		return b[:n], nil
 	}
 }
-
 func (m *MsgAddCodeUploadParamsAddressesResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgAddCodeUploadParamsAddressesResponse.Merge(m, src)
 }
-
 func (m *MsgAddCodeUploadParamsAddressesResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgAddCodeUploadParamsAddressesResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgAddCodeUploadParamsAddressesResponse.DiscardUnknown(m)
 }
@@ -1440,11 +1299,9 @@ func (*MsgRemoveCodeUploadParamsAddresses) ProtoMessage()    {}
 func (*MsgRemoveCodeUploadParamsAddresses) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{29}
 }
-
 func (m *MsgRemoveCodeUploadParamsAddresses) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgRemoveCodeUploadParamsAddresses) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgRemoveCodeUploadParamsAddresses.Marshal(b, m, deterministic)
@@ -1457,15 +1314,12 @@ func (m *MsgRemoveCodeUploadParamsAddresses) XXX_Marshal(b []byte, deterministic
 		return b[:n], nil
 	}
 }
-
 func (m *MsgRemoveCodeUploadParamsAddresses) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgRemoveCodeUploadParamsAddresses.Merge(m, src)
 }
-
 func (m *MsgRemoveCodeUploadParamsAddresses) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgRemoveCodeUploadParamsAddresses) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgRemoveCodeUploadParamsAddresses.DiscardUnknown(m)
 }
@@ -1474,12 +1328,12 @@ var xxx_messageInfo_MsgRemoveCodeUploadParamsAddresses proto.InternalMessageInfo
 
 // MsgRemoveCodeUploadParamsAddressesResponse defines the response
 // structure for executing a MsgRemoveCodeUploadParamsAddresses message.
-type MsgRemoveCodeUploadParamsAddressesResponse struct{}
+type MsgRemoveCodeUploadParamsAddressesResponse struct {
+}
 
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) Reset() {
 	*m = MsgRemoveCodeUploadParamsAddressesResponse{}
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) String() string {
 	return proto.CompactTextString(m)
 }
@@ -1487,11 +1341,9 @@ func (*MsgRemoveCodeUploadParamsAddressesResponse) ProtoMessage() {}
 func (*MsgRemoveCodeUploadParamsAddressesResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{30}
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgRemoveCodeUploadParamsAddressesResponse.Marshal(b, m, deterministic)
@@ -1504,15 +1356,12 @@ func (m *MsgRemoveCodeUploadParamsAddressesResponse) XXX_Marshal(b []byte, deter
 		return b[:n], nil
 	}
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgRemoveCodeUploadParamsAddressesResponse.Merge(m, src)
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgRemoveCodeUploadParamsAddressesResponse.DiscardUnknown(m)
 }
@@ -1542,11 +1391,9 @@ func (*MsgStoreAndMigrateContract) ProtoMessage()    {}
 func (*MsgStoreAndMigrateContract) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{31}
 }
-
 func (m *MsgStoreAndMigrateContract) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgStoreAndMigrateContract) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgStoreAndMigrateContract.Marshal(b, m, deterministic)
@@ -1559,15 +1406,12 @@ func (m *MsgStoreAndMigrateContract) XXX_Marshal(b []byte, deterministic bool) (
 		return b[:n], nil
 	}
 }
-
 func (m *MsgStoreAndMigrateContract) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgStoreAndMigrateContract.Merge(m, src)
 }
-
 func (m *MsgStoreAndMigrateContract) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgStoreAndMigrateContract) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgStoreAndMigrateContract.DiscardUnknown(m)
 }
@@ -1593,11 +1437,9 @@ func (*MsgStoreAndMigrateContractResponse) ProtoMessage()    {}
 func (*MsgStoreAndMigrateContractResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{32}
 }
-
 func (m *MsgStoreAndMigrateContractResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgStoreAndMigrateContractResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgStoreAndMigrateContractResponse.Marshal(b, m, deterministic)
@@ -1610,15 +1452,12 @@ func (m *MsgStoreAndMigrateContractResponse) XXX_Marshal(b []byte, deterministic
 		return b[:n], nil
 	}
 }
-
 func (m *MsgStoreAndMigrateContractResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgStoreAndMigrateContractResponse.Merge(m, src)
 }
-
 func (m *MsgStoreAndMigrateContractResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgStoreAndMigrateContractResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgStoreAndMigrateContractResponse.DiscardUnknown(m)
 }
@@ -1641,11 +1480,9 @@ func (*MsgUpdateContractLabel) ProtoMessage()    {}
 func (*MsgUpdateContractLabel) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{33}
 }
-
 func (m *MsgUpdateContractLabel) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateContractLabel) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateContractLabel.Marshal(b, m, deterministic)
@@ -1658,15 +1495,12 @@ func (m *MsgUpdateContractLabel) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateContractLabel) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateContractLabel.Merge(m, src)
 }
-
 func (m *MsgUpdateContractLabel) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateContractLabel) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateContractLabel.DiscardUnknown(m)
 }
@@ -1674,7 +1508,8 @@ func (m *MsgUpdateContractLabel) XXX_DiscardUnknown() {
 var xxx_messageInfo_MsgUpdateContractLabel proto.InternalMessageInfo
 
 // MsgUpdateContractLabelResponse returns empty data
-type MsgUpdateContractLabelResponse struct{}
+type MsgUpdateContractLabelResponse struct {
+}
 
 func (m *MsgUpdateContractLabelResponse) Reset()         { *m = MsgUpdateContractLabelResponse{} }
 func (m *MsgUpdateContractLabelResponse) String() string { return proto.CompactTextString(m) }
@@ -1682,11 +1517,9 @@ func (*MsgUpdateContractLabelResponse) ProtoMessage()    {}
 func (*MsgUpdateContractLabelResponse) Descriptor() ([]byte, []int) {
 	return fileDescriptor_4f74d82755520264, []int{34}
 }
-
 func (m *MsgUpdateContractLabelResponse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-
 func (m *MsgUpdateContractLabelResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
 		return xxx_messageInfo_MsgUpdateContractLabelResponse.Marshal(b, m, deterministic)
@@ -1699,15 +1532,12 @@ func (m *MsgUpdateContractLabelResponse) XXX_Marshal(b []byte, deterministic boo
 		return b[:n], nil
 	}
 }
-
 func (m *MsgUpdateContractLabelResponse) XXX_Merge(src proto.Message) {
 	xxx_messageInfo_MsgUpdateContractLabelResponse.Merge(m, src)
 }
-
 func (m *MsgUpdateContractLabelResponse) XXX_Size() int {
 	return m.Size()
 }
-
 func (m *MsgUpdateContractLabelResponse) XXX_DiscardUnknown() {
 	xxx_messageInfo_MsgUpdateContractLabelResponse.DiscardUnknown(m)
 }
@@ -1867,10 +1697,8 @@ var fileDescriptor_4f74d82755520264 = []byte{
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
-var (
-	_ context.Context
-	_ grpc.ClientConn
-)
+var _ context.Context
+var _ grpc.ClientConn
 
 // This is a compile-time assertion to ensure that this generated file
 // is compatible with the grpc package it is being compiled against.
@@ -2168,72 +1996,57 @@ type MsgServer interface {
 }
 
 // UnimplementedMsgServer can be embedded to have forward compatible implementations.
-type UnimplementedMsgServer struct{}
+type UnimplementedMsgServer struct {
+}
 
 func (*UnimplementedMsgServer) StoreCode(ctx context.Context, req *MsgStoreCode) (*MsgStoreCodeResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoreCode not implemented")
 }
-
 func (*UnimplementedMsgServer) InstantiateContract(ctx context.Context, req *MsgInstantiateContract) (*MsgInstantiateContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InstantiateContract not implemented")
 }
-
 func (*UnimplementedMsgServer) InstantiateContract2(ctx context.Context, req *MsgInstantiateContract2) (*MsgInstantiateContract2Response, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method InstantiateContract2 not implemented")
 }
-
 func (*UnimplementedMsgServer) ExecuteContract(ctx context.Context, req *MsgExecuteContract) (*MsgExecuteContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ExecuteContract not implemented")
 }
-
 func (*UnimplementedMsgServer) MigrateContract(ctx context.Context, req *MsgMigrateContract) (*MsgMigrateContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MigrateContract not implemented")
 }
-
 func (*UnimplementedMsgServer) UpdateAdmin(ctx context.Context, req *MsgUpdateAdmin) (*MsgUpdateAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateAdmin not implemented")
 }
-
 func (*UnimplementedMsgServer) ClearAdmin(ctx context.Context, req *MsgClearAdmin) (*MsgClearAdminResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ClearAdmin not implemented")
 }
-
 func (*UnimplementedMsgServer) UpdateInstantiateConfig(ctx context.Context, req *MsgUpdateInstantiateConfig) (*MsgUpdateInstantiateConfigResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateInstantiateConfig not implemented")
 }
-
 func (*UnimplementedMsgServer) UpdateParams(ctx context.Context, req *MsgUpdateParams) (*MsgUpdateParamsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateParams not implemented")
 }
-
 func (*UnimplementedMsgServer) SudoContract(ctx context.Context, req *MsgSudoContract) (*MsgSudoContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SudoContract not implemented")
 }
-
 func (*UnimplementedMsgServer) PinCodes(ctx context.Context, req *MsgPinCodes) (*MsgPinCodesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PinCodes not implemented")
 }
-
 func (*UnimplementedMsgServer) UnpinCodes(ctx context.Context, req *MsgUnpinCodes) (*MsgUnpinCodesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnpinCodes not implemented")
 }
-
 func (*UnimplementedMsgServer) StoreAndInstantiateContract(ctx context.Context, req *MsgStoreAndInstantiateContract) (*MsgStoreAndInstantiateContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoreAndInstantiateContract not implemented")
 }
-
 func (*UnimplementedMsgServer) RemoveCodeUploadParamsAddresses(ctx context.Context, req *MsgRemoveCodeUploadParamsAddresses) (*MsgRemoveCodeUploadParamsAddressesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RemoveCodeUploadParamsAddresses not implemented")
 }
-
 func (*UnimplementedMsgServer) AddCodeUploadParamsAddresses(ctx context.Context, req *MsgAddCodeUploadParamsAddresses) (*MsgAddCodeUploadParamsAddressesResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AddCodeUploadParamsAddresses not implemented")
 }
-
 func (*UnimplementedMsgServer) StoreAndMigrateContract(ctx context.Context, req *MsgStoreAndMigrateContract) (*MsgStoreAndMigrateContractResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoreAndMigrateContract not implemented")
 }
-
 func (*UnimplementedMsgServer) UpdateContractLabel(ctx context.Context, req *MsgUpdateContractLabel) (*MsgUpdateContractLabelResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateContractLabel not implemented")
 }
@@ -4080,7 +3893,6 @@ func encodeVarintTx(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
-
 func (m *MsgStoreCode) Size() (n int) {
 	if m == nil {
 		return 0
@@ -4728,11 +4540,9 @@ func (m *MsgUpdateContractLabelResponse) Size() (n int) {
 func sovTx(x uint64) (n int) {
 	return (math_bits.Len64(x|1) + 6) / 7
 }
-
 func sozTx(x uint64) (n int) {
 	return sovTx(uint64((x << 1) ^ uint64((int64(x) >> 63))))
 }
-
 func (m *MsgStoreCode) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -4885,7 +4695,6 @@ func (m *MsgStoreCode) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgStoreCodeResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -4989,7 +4798,6 @@ func (m *MsgStoreCodeResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgInstantiateContract) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -5223,7 +5031,6 @@ func (m *MsgInstantiateContract) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgInstantiateContractResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -5340,7 +5147,6 @@ func (m *MsgInstantiateContractResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgInstantiateContract2) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -5628,7 +5434,6 @@ func (m *MsgInstantiateContract2) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgInstantiateContract2Response) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -5745,7 +5550,6 @@ func (m *MsgInstantiateContract2Response) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgExecuteContract) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -5928,7 +5732,6 @@ func (m *MsgExecuteContract) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgExecuteContractResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6013,7 +5816,6 @@ func (m *MsgExecuteContractResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgMigrateContract) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6181,7 +5983,6 @@ func (m *MsgMigrateContract) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgMigrateContractResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6266,7 +6067,6 @@ func (m *MsgMigrateContractResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateAdmin) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6413,7 +6213,6 @@ func (m *MsgUpdateAdmin) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateAdminResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6464,7 +6263,6 @@ func (m *MsgUpdateAdminResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgClearAdmin) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6579,7 +6377,6 @@ func (m *MsgClearAdmin) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgClearAdminResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6630,7 +6427,6 @@ func (m *MsgClearAdminResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *AccessConfigUpdate) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6733,7 +6529,6 @@ func (m *AccessConfigUpdate) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateInstantiateConfig) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6871,7 +6666,6 @@ func (m *MsgUpdateInstantiateConfig) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateInstantiateConfigResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -6922,7 +6716,6 @@ func (m *MsgUpdateInstantiateConfigResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateParams) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7038,7 +6831,6 @@ func (m *MsgUpdateParams) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateParamsResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7089,7 +6881,6 @@ func (m *MsgUpdateParamsResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgSudoContract) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7238,7 +7029,6 @@ func (m *MsgSudoContract) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgSudoContractResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7323,7 +7113,6 @@ func (m *MsgSudoContractResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgPinCodes) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7482,7 +7271,6 @@ func (m *MsgPinCodes) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgPinCodesResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7533,7 +7321,6 @@ func (m *MsgPinCodesResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUnpinCodes) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7692,7 +7479,6 @@ func (m *MsgUnpinCodes) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUnpinCodesResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -7743,7 +7529,6 @@ func (m *MsgUnpinCodesResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgStoreAndInstantiateContract) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8146,7 +7931,6 @@ func (m *MsgStoreAndInstantiateContract) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgStoreAndInstantiateContractResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8263,7 +8047,6 @@ func (m *MsgStoreAndInstantiateContractResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgAddCodeUploadParamsAddresses) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8378,7 +8161,6 @@ func (m *MsgAddCodeUploadParamsAddresses) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgAddCodeUploadParamsAddressesResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8429,7 +8211,6 @@ func (m *MsgAddCodeUploadParamsAddressesResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgRemoveCodeUploadParamsAddresses) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8544,7 +8325,6 @@ func (m *MsgRemoveCodeUploadParamsAddresses) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgRemoveCodeUploadParamsAddressesResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8595,7 +8375,6 @@ func (m *MsgRemoveCodeUploadParamsAddressesResponse) Unmarshal(dAtA []byte) erro
 	}
 	return nil
 }
-
 func (m *MsgStoreAndMigrateContract) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8814,7 +8593,6 @@ func (m *MsgStoreAndMigrateContract) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgStoreAndMigrateContractResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -8952,7 +8730,6 @@ func (m *MsgStoreAndMigrateContractResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateContractLabel) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -9099,7 +8876,6 @@ func (m *MsgUpdateContractLabel) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func (m *MsgUpdateContractLabelResponse) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
@@ -9150,7 +8926,6 @@ func (m *MsgUpdateContractLabelResponse) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-
 func skipTx(dAtA []byte) (n int, err error) {
 	l := len(dAtA)
 	iNdEx := 0
