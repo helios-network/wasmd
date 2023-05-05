@@ -39,6 +39,8 @@ require (
 	cosmossdk.io/tools/rosetta v0.2.1
 	github.com/cometbft/cometbft v0.37.1
 	github.com/cometbft/cometbft-db v0.7.0
+	github.com/gogo/protobuf v1.3.2
+	github.com/regen-network/cosmos-proto v0.3.1
 	github.com/spf13/viper v1.15.0
 )
 
@@ -86,7 +88,6 @@ require (
 	github.com/go-logfmt/logfmt v0.6.0 // indirect
 	github.com/godbus/dbus v0.0.0-20190726142602-4481cbc300e2 // indirect
 	github.com/gogo/googleapis v1.4.1 // indirect
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/glog v1.1.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/mock v1.6.0 // indirect
