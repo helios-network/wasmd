@@ -309,7 +309,7 @@ func NewWasmApp(
 		icacontrollertypes.StoreKey,
 	)
 
-	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey)
+	tkeys := sdk.NewTransientStoreKeys(paramstypes.TStoreKey, banktypes.TStoreKey)
 	memKeys := sdk.NewMemoryStoreKeys(capabilitytypes.MemStoreKey)
 
 	// load state streaming if enabled
@@ -366,6 +366,7 @@ func NewWasmApp(
 	app.BankKeeper = bankkeeper.NewBaseKeeper(
 		appCodec,
 		keys[banktypes.StoreKey],
+		keys[banktypes.TStoreKey],
 		app.AccountKeeper,
 		BlockedAddresses(),
 		authtypes.NewModuleAddress(govtypes.ModuleName).String(),
