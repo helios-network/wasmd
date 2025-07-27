@@ -10,6 +10,7 @@ import (
 	"cosmossdk.io/log"
 	"cosmossdk.io/store"
 	storemetrics "cosmossdk.io/store/metrics"
+	storetypes "cosmossdk.io/store/types"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
@@ -27,7 +28,7 @@ func TestSelectAuthorizationPolicy(t *testing.T) {
 	}}
 
 	ms := store.NewCommitMultiStore(dbm.NewMemDB(), log.NewTestLogger(t), storemetrics.NewNoOpMetrics())
-	ctx := sdk.NewContext(ms, tmproto.Header{}, false, log.NewNopLogger())
+	ctx := sdk.NewContext(ms, map[string]storetypes.MultiStore{}, tmproto.Header{}, false, log.NewNopLogger())
 
 	specs := map[string]struct {
 		ctx   sdk.Context

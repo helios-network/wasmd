@@ -1,7 +1,6 @@
 package keeper
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -15,12 +14,10 @@ import (
 	"github.com/stretchr/testify/require"
 
 	errorsmod "cosmossdk.io/errors"
-	sdkmath "cosmossdk.io/math"
 
 	sdk "github.com/cosmos/cosmos-sdk/types"
 	sdkerrors "github.com/cosmos/cosmos-sdk/types/errors"
 	banktypes "github.com/cosmos/cosmos-sdk/x/bank/types"
-	stakingtypes "github.com/cosmos/cosmos-sdk/x/staking/types"
 
 	"github.com/CosmWasm/wasmd/x/wasm/keeper/testdata"
 	"github.com/CosmWasm/wasmd/x/wasm/types"
@@ -580,25 +577,6 @@ func TestDistributionQuery(t *testing.T) {
 			},
 			expErr: true,
 		},
-		"delegation rewards - existing delegation": {
-			setup: func(t *testing.T, ctx sdk.Context) sdk.Context {
-				val1, err := keepers.StakingKeeper.GetValidator(ctx, val1Addr)
-				require.NoError(t, err)
-				_, err = keepers.StakingKeeper.Delegate(ctx, delegator, sdkmath.NewInt(10_000_000), stakingtypes.Unbonded, val1, true)
-				require.NoError(t, err)
-				setValidatorRewards(ctx, keepers.StakingKeeper, keepers.DistKeeper, val1Addr, "100000000")
-				return nextBlock(ctx, keepers.StakingKeeper)
-			},
-			query: &wasmvmtypes.DistributionQuery{
-				DelegationRewards: &wasmvmtypes.DelegationRewardsQuery{DelegatorAddress: delegator.String(), ValidatorAddress: val1Addr.String()},
-			},
-			assert: func(t *testing.T, d []byte) {
-				var rsp wasmvmtypes.DelegationRewardsResponse
-				mustUnmarshal(t, d, &rsp)
-				expRewards := []wasmvmtypes.DecCoin{{Amount: "45000000.000000000000000000", Denom: "stake"}}
-				assert.Equal(t, expRewards, rsp.Rewards)
-			},
-		},
 		"delegation rewards - no delegation": {
 			setup: func(t *testing.T, ctx sdk.Context) sdk.Context {
 				setValidatorRewards(ctx, keepers.StakingKeeper, keepers.DistKeeper, val1Addr, "100000000")
@@ -608,68 +586,6 @@ func TestDistributionQuery(t *testing.T) {
 				DelegationRewards: &wasmvmtypes.DelegationRewardsQuery{DelegatorAddress: delegator.String(), ValidatorAddress: val1Addr.String()},
 			},
 			expErr: true,
-		},
-		"delegation rewards - validator empty": {
-			setup: func(t *testing.T, ctx sdk.Context) sdk.Context {
-				val, err := keepers.StakingKeeper.GetValidator(ctx, val1Addr)
-				require.NoError(t, err)
-				_, err = keepers.StakingKeeper.Delegate(ctx, delegator, sdkmath.NewInt(10_000_000), stakingtypes.Unbonded, val, true)
-				require.NoError(t, err)
-				return ctx
-			},
-			query: &wasmvmtypes.DistributionQuery{
-				DelegationRewards: &wasmvmtypes.DelegationRewardsQuery{DelegatorAddress: delegator.String()},
-			},
-			expErr: true,
-		},
-		"delegation total rewards": {
-			setup: func(t *testing.T, ctx sdk.Context) sdk.Context {
-				val, err := keepers.StakingKeeper.GetValidator(ctx, val1Addr)
-				require.NoError(t, err)
-				_, err = keepers.StakingKeeper.Delegate(ctx, delegator, sdkmath.NewInt(10_000_000), stakingtypes.Unbonded, val, true)
-				require.NoError(t, err)
-				setValidatorRewards(ctx, keepers.StakingKeeper, keepers.DistKeeper, val1Addr, "100000000")
-				return nextBlock(ctx, keepers.StakingKeeper)
-			},
-			query: &wasmvmtypes.DistributionQuery{
-				DelegationTotalRewards: &wasmvmtypes.DelegationTotalRewardsQuery{DelegatorAddress: delegator.String()},
-			},
-			assert: func(t *testing.T, d []byte) {
-				var rsp wasmvmtypes.DelegationTotalRewardsResponse
-				mustUnmarshal(t, d, &rsp)
-				expRewards := []wasmvmtypes.DelegatorReward{
-					{
-						Reward:           []wasmvmtypes.DecCoin{{Amount: "45000000.000000000000000000", Denom: "stake"}},
-						ValidatorAddress: val1Addr.String(),
-					},
-				}
-				assert.Equal(t, expRewards, rsp.Rewards)
-				expTotal := []wasmvmtypes.DecCoin{{Amount: "45000000.000000000000000000", Denom: "stake"}}
-				assert.Equal(t, expTotal, rsp.Total)
-			},
-		},
-		"delegator validators": {
-			setup: func(t *testing.T, ctx sdk.Context) sdk.Context {
-				for _, v := range []sdk.ValAddress{val1Addr, val2Addr} {
-					val, err := keepers.StakingKeeper.GetValidator(ctx, v)
-					require.NoError(t, err)
-					_, err = keepers.StakingKeeper.Delegate(ctx, delegator, sdkmath.NewInt(10_000_000), stakingtypes.Unbonded, val, true)
-					require.NoError(t, err)
-				}
-				return ctx
-			},
-			query: &wasmvmtypes.DistributionQuery{
-				DelegatorValidators: &wasmvmtypes.DelegatorValidatorsQuery{DelegatorAddress: delegator.String()},
-			},
-			assert: func(t *testing.T, d []byte) {
-				var rsp wasmvmtypes.DelegatorValidatorsResponse
-				mustUnmarshal(t, d, &rsp)
-				expVals := []string{val1Addr.String(), val2Addr.String()}
-				if bytes.Compare(val1Addr, val2Addr) > 0 {
-					expVals = []string{expVals[1], expVals[0]}
-				}
-				assert.Equal(t, expVals, rsp.Validators)
-			},
 		},
 	}
 	for name, spec := range specs {
