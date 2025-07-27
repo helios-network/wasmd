@@ -255,7 +255,6 @@ replace (
 	cosmossdk.io/x/upgrade => github.com/Helios-Chain-Labs/cosmos-sdk/x/upgrade v0.50.10-helios-125
 
 	github.com/99designs/keyring => github.com/cosmos/keyring v1.2.0
-
 	// github.com/cosmos/cosmos-sdk => ../../cosmos-sdk
 	github.com/cosmos/cosmos-sdk => github.com/Helios-Chain-Labs/cosmos-sdk v0.50.10-helios-125
 	// dgrijalva/jwt-go is deprecated and doesn't receive security updates.
