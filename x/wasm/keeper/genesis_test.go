@@ -666,7 +666,7 @@ func setupKeeper(t *testing.T) (*Keeper, sdk.Context) {
 	ms.MountStoreWithDB(keyWasm, storetypes.StoreTypeIAVL, db)
 	require.NoError(t, ms.LoadLatestVersion())
 
-	ctx := sdk.NewContext(ms, map[string]storetypes.CacheWrap{}, cmtproto.Header{
+	ctx := sdk.NewContext(ms, map[string]storetypes.ArchiveKVStore{}, cmtproto.Header{
 		Height: 1234567,
 		Time:   time.Date(2020, time.April, 22, 12, 0, 0, 0, time.UTC),
 	}, false, log.NewNopLogger())

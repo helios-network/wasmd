@@ -242,7 +242,7 @@ func createTestInput(
 
 	require.NoError(t, ms.LoadLatestVersion())
 
-	ctx := sdk.NewContext(ms, map[string]storetypes.CacheWrap{}, tmproto.Header{
+	ctx := sdk.NewContext(ms, map[string]storetypes.ArchiveKVStore{}, tmproto.Header{
 		Height: 1234567,
 		Time:   time.Date(2020, time.April, 22, 12, 0, 0, 0, time.UTC),
 	}, isCheckTx, log.NewNopLogger())

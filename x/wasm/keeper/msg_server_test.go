@@ -28,7 +28,7 @@ func TestSelectAuthorizationPolicy(t *testing.T) {
 	}}
 
 	ms := store.NewCommitMultiStore(dbm.NewMemDB(), log.NewTestLogger(t), storemetrics.NewNoOpMetrics())
-	ctx := sdk.NewContext(ms, map[string]storetypes.MultiStore{}, tmproto.Header{}, false, log.NewNopLogger())
+	ctx := sdk.NewContext(ms, map[string]storetypes.ArchiveKVStore{}, tmproto.Header{}, false, log.NewNopLogger())
 
 	specs := map[string]struct {
 		ctx   sdk.Context
