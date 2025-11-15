@@ -511,6 +511,8 @@ func NewWasmApp(
 		homePath,
 		app.BaseApp,
 		authtypes.NewModuleAddress(govtypes.ModuleName).String(),
+		"v0.0.0",
+		[]string{},
 	)
 
 	app.IBCKeeper = ibckeeper.NewKeeper(

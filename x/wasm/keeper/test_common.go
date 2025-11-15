@@ -348,6 +348,8 @@ func createTestInput(
 		tempDir,
 		nil,
 		authtypes.NewModuleAddress(upgradetypes.ModuleName).String(),
+		"v0.0.0",
+		[]string{},
 	)
 
 	faucet := NewTestFaucet(t, ctx, bankKeeper, minttypes.ModuleName, sdk.NewCoin("stake", sdkmath.NewInt(100_000_000_000)))
